@@ -7,7 +7,7 @@ Add to your `.bashrc` or `.zshrc`:
 ````bash
 kube_prompt()
 {
-   kubectl_current_context=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+   kubectl_current_context=$(kubectl config current-context)
    kubectl_project=$(echo $kubectl_current_context | cut -d '_' -f 2)
    kubectl_cluster=$(echo $kubectl_current_context | cut -d '_' -f 4)
    kubectl_prompt="k8s:($kubectl_project|$kubectl_cluster)"
